@@ -2,20 +2,7 @@ const path = require('path');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-module.exports = {
-	target: 'node',
-	entry: `${__dirname}/src/server`,
-	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: 'index.js',
-	},
-	node: {
-		__dirname: false,
-		__filename: false,
-	},
-	optimization: {
-		nodeEnv: false,
-	},
+const common = {
 	mode: isProduction ? 'production' : 'development',
 	devtool: isProduction ? 'source-map' : 'cheap-module-source-map',
 	resolve: {
@@ -37,3 +24,29 @@ module.exports = {
 		],
 	},
 };
+
+module.exports = [
+	{
+		...common,
+		target: 'node',
+		entry: './src/server',
+		output: {
+			filename: 'index.js',
+		},
+		node: {
+			__dirname: false,
+			__filename: false,
+		},
+		optimization: {
+			nodeEnv: false,
+		},
+	},
+	{
+		...common,
+		target: 'web',
+		entry: './src/client',
+		output: {
+			filename: 'public/assets/app.js',
+		},
+	},
+];

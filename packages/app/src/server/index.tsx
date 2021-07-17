@@ -10,6 +10,8 @@ import { renderDocument } from './utils';
 const app = express();
 app.disable('x-powered-by');
 
+app.use(express.static(`${__dirname}/public`));
+
 app.get('/favicon.ico', (_req, res) => {
 	res.status(404).end();
 });
