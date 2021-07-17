@@ -1,0 +1,28 @@
+{
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "name": "@ashesdb/app",
+  "version": "0.0.0",
+  "author": "chiel",
+  "repository": {
+    "type": "git",
+    "url": "github:ashesdb/ashesdb",
+    "directory": "packages/app"
+  },
+  "files": [],
+  "scripts": {
+    "build": "webpack"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "source-map-loader": "^3.0.0",
+    "ts-loader": "^9.2.3",
+    "typescript": "^4.3.5",
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2"
+  }
+}
