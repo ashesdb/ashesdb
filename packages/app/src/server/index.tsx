@@ -2,6 +2,7 @@ import 'source-map-support/register';
 
 import express from 'express';
 import React from 'react';
+import { StaticRouter } from 'react-router-dom/server';
 
 import Root from '../app/components/Root';
 
@@ -16,8 +17,12 @@ app.get('/favicon.ico', (_req, res) => {
 	res.status(404).end();
 });
 
-app.get('*', (_req, res) => {
-	const markup = renderDocument(<Root />);
+app.get('*', (req, res) => {
+	const markup = renderDocument(
+		<StaticRouter location={req.url}>
+			<Root />
+		</StaticRouter>
+	);
 	res.send(markup);
 });
 
