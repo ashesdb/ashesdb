@@ -19,12 +19,12 @@ module.exports = {
 	mode: isProduction ? 'production' : 'development',
 	devtool: isProduction ? 'source-map' : 'cheap-module-source-map',
 	resolve: {
-		extensions: ['.ts', '.js', '.json'],
+		extensions: ['.ts', '.tsx', '.js', '.json'],
 	},
 	module: {
 		rules: [
 			{
-				test: /\.ts$/,
+				test: /\.tsx?$/,
 				loader: 'ts-loader',
 				exclude: /node_modules/,
 			},
