@@ -1,5 +1,8 @@
 {
   "private": true,
   "name": "ashesdb",
-  "repository": "github:ashesdb/ashesdb"
+  "repository": "github:ashesdb/ashesdb",
+  "workspaces": [
+    "packages/*"
+  ]
 }
