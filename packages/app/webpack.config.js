@@ -11,6 +11,16 @@ const common = {
 	module: {
 		rules: [
 			{
+				test: /\.(?:jpg|png)$/,
+				exclude: /node_modules/,
+				loader: 'file-loader',
+				options: {
+					name: '[name].[ext]',
+					outputPath: 'public/assets',
+					publicPath: '/assets',
+				},
+			},
+			{
 				test: /\.tsx?$/,
 				loader: 'ts-loader',
 				exclude: /node_modules/,
