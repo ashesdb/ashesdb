@@ -12,7 +12,10 @@
   },
   "files": [],
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "start": "run-p start-nodemon start-webpack",
+    "start-nodemon": "nodemon -w dist dist",
+    "start-webpack": "webpack -w"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -28,6 +31,8 @@
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
     "file-loader": "^6.2.0",
+    "nodemon": "^2.0.12",
+    "npm-run-all": "^4.1.5",
     "source-map-loader": "^3.0.0",
     "ts-loader": "^9.2.3",
     "typescript": "^4.3.5",
