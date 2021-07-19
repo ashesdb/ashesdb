@@ -5,7 +5,7 @@ export default createUseStyles({
 		html: {
 			background: '#222',
 			color: '#ccc',
-			font: '300 18px/24px Roboto, sans-serif',
+			font: '300 18px/24px Merriweather, serif',
 		},
 		body: {
 			margin: 0,
