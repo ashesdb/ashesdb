@@ -1,4 +1,12 @@
 declare namespace ashesdb {
+	interface Archetype {
+		id: string;
+		name: string;
+		description: string;
+		skillTreesLayout?: SkillTreeLayout[];
+		orderedSkills?: string[];
+	}
+
 	interface Skill {
 		kind: string;
 		id: string;
@@ -12,5 +20,10 @@ declare namespace ashesdb {
 		id: string;
 		name: string;
 		color: string;
+	}
+
+	interface SkillTreeLayout {
+		id: string;
+		skills: string[][];
 	}
 }
