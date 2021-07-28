@@ -7,6 +7,11 @@ declare namespace ashesdb {
 		orderedSkills?: string[];
 	}
 
+	interface Build {
+		archetypeId: string;
+		pointsPerSkill: { [k: string]: number };
+	}
+
 	interface Skill {
 		kind: string;
 		id: string;
