@@ -9,9 +9,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ashesdb/app@workspace:packages/app"
   dependencies:
+    "@types/classnames": ^2.3.1
     "@types/express": ^4.17.13
     "@types/react": ^17.0.14
     "@types/react-dom": ^17.0.9
+    classnames: ^2.3.1
     express: ^4.17.1
     file-loader: ^6.2.0
     history: ^5.0.0
@@ -102,6 +104,15 @@ __metadata:
     "@types/connect": "*"
     "@types/node": "*"
   checksum: abbebf715ffda345ee9ffc53f4fdad033b63cffcae1e22ffe58c6c8dc251f4879efd6d06714171c106ea89ad3175d9d70021fdc470bf1f0234eb334f3922770e
+  languageName: node
+  linkType: hard
+
+"@types/classnames@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "@types/classnames@npm:2.3.1"
+  dependencies:
+    classnames: "*"
+  checksum: bfef58f03417265e6fe760abba7342ba339d36a30a0a913dcad271f7ef580fa776ec9c51d6f2487fc1ade113382a2b7a16c609373ce6528c2c10ec03eb9d2415
   languageName: node
   linkType: hard
 
@@ -873,6 +884,13 @@ __metadata:
   version: 2.0.0
   resolution: "ci-info@npm:2.0.0"
   checksum: 553fe83c085fce5e19e20f85b993f24a463e6f805803837a8868607bb68b1300567868694a5dff1beca6c54926a4c0be1cc9ef0c35f810653d590bf64183f6a0
+  languageName: node
+  linkType: hard
+
+"classnames@npm:*, classnames@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "classnames@npm:2.3.1"
+  checksum: 57d536edede609f81425d24b062d8d720a466565faf1e38d32c881e883920baa71519ac70c7b565e9cd39201fb1c1ff9bdf8aabf8e26544bac481e7924867c83
   languageName: node
   linkType: hard
 
