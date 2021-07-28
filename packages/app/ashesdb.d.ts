@@ -1,4 +1,11 @@
 declare namespace ashesdb {
+	interface AllocatedPoints {
+		perTier: number[];
+		perTierCumulative: number[];
+		perTree: number[];
+		total: number;
+	}
+
 	interface Archetype {
 		id: string;
 		name: string;
