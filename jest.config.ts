@@ -5,6 +5,12 @@ export default {
 	coverageDirectory: 'coverage',
 	coverageThreshold: {
 		global: {
+			branches: 0,
+			functions: 0,
+			lines: 0,
+			statements: 0,
+		},
+		"packages/app/src/app/utils": {
 			branches: 100,
 			functions: 100,
 			lines: 100,
