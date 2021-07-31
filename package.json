@@ -11,6 +11,7 @@
   "devDependencies": {
     "@types/jest": "^26.0.24",
     "jest": "^27.0.6",
+    "lerna": "^4.0.0",
     "ts-jest": "^27.0.4",
     "ts-node": "^10.1.0"
   }
