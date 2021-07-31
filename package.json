@@ -6,6 +6,7 @@
     "packages/*"
   ],
   "scripts": {
+    "build": "lerna run build",
     "test": "jest"
   },
   "devDependencies": {
