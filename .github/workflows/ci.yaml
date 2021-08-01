@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+env:
+  DOCKER_REPO: ghcr.io/ashesdb
+
 jobs:
   install:
     name: Install dependencies
@@ -110,3 +113,38 @@ jobs:
         with:
           name: coverage-report
           path: coverage/lcov-report
+
+  build-containers:
+    name: Build containers
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - changed
+      - docker-lint
+    if: fromJSON(needs.changed.outputs.matrices).build-container[0] != null
+    strategy:
+      matrix:
+        package: ${{ fromJSON(needs.changed.outputs.matrices).build-container }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: build-artifacts
+          path: packages
+      - name: Determine version
+        id: version
+        run: |
+          VERSION="v$(jq -r .version packages/${{ matrix.package }}/package.json)"
+          echo "::set-output name=version ::$VERSION"
+      - name: Build image
+        env:
+          DOCKER_BUILDKIT: 1
+        run: >-
+          docker build
+          -f packages/${{ matrix.package }}/Dockerfile
+          -t $DOCKER_REPO/${{ matrix.package }}:${{ steps.version.outputs.version }}
+          packages/${{ matrix.package }}
+      - name: Log into GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
+      - name: Push docker image to GHCR
+        run: docker push $DOCKER_REPO/${{ matrix.package }}:${{ steps.version.outputs.version }}
