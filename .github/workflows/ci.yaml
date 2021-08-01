@@ -30,6 +30,7 @@ jobs:
     needs:
       - install
     outputs:
+      matrices: ${{ steps.matrices.outputs.matrices }}
       packages: ${{ steps.packages.outputs.packages }}
     steps:
       - uses: actions/checkout@v2
@@ -42,6 +43,9 @@ jobs:
       - name: Get changed packages
         id: packages
         run: echo "::set-output name=packages ::$((yarn lerna changed --loglevel silent || true) | paste -sd, -)"
+      - name: Generate matrices of jobs for changed packages
+        id: matrices
+        run: echo "::set-output name=matrices ::$(./.github/scripts/changed-matrices ${{ steps.packages.outputs.packages }})"
 
   build:
     name: Build packages

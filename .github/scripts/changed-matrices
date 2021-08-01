@@ -1,0 +1,47 @@
+#!/usr/bin/env node
+
+const yargs = require('yargs/yargs');
+const { hideBin } = require('yargs/helpers');
+
+const validJobs = {
+	'build-container': true,
+};
+
+const argv = yargs(hideBin(process.argv))
+	.command('$0 <packages>', 'Generate matrices per job for given packages.', yargs => {
+		yargs.positional('packages', {
+			describe: 'Comma-separated list of package names.',
+			type: 'string',
+			coerce: arg => arg.split(','),
+		});
+	})
+	.help()
+	.argv;
+
+function getPackageSlug(name) {
+	return name.replace(/^[^/]+\//, '');
+}
+
+const packages = argv.packages.map(name => require(`${name}/package.json`));
+
+const invalidJobs = Object.entries(packages.reduce(
+	(acc, pkg) => ({ ...acc, [pkg.name]: (pkg.jobs || []).filter(job => !validJobs[job]) }),
+	{},
+))
+	.filter(([, jobs]) => !!jobs.length)
+	.reduce((acc, [name, jobs]) => ({ ...acc, [name]: jobs }), {});
+
+if (Object.keys(invalidJobs).length) {
+	console.info('ERROR: Invalid jobs found');
+	console.info(JSON.stringify(invalidJobs, null, '  '));
+	process.exit(1);
+}
+
+const m = Object.keys(validJobs).reduce((all, job) => ({
+	...all,
+	[job]: packages
+		.filter(pkg => (pkg.jobs || []).includes(job))
+		.map(pkg => getPackageSlug(pkg.name)),
+}), {});
+
+console.log(JSON.stringify(m));
