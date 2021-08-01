@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/ashesdb/ashesdb/compare/@ashesdb/app@0.1.0...@ashesdb/app@0.2.0) (2021-08-01)
+
+
+### Features
+
+* **app:** build container in CI ([0d2ae46](https://github.com/ashesdb/ashesdb/commit/0d2ae464ecc7731f34e817a8b067db4d029f1d04))
+
+
+
+
+
 # 0.1.0 (2021-08-01)
 
 
