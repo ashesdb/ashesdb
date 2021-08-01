@@ -4,6 +4,10 @@
 	"npmClient": "yarn",
 	"useWorkspaces": true,
 	"command": {
+		"publish": {
+			"verifyAccess": false,
+			"yes": true
+		},
 		"version": {
 			"conventionalCommits": true,
 			"message": "chore(release): publish",
