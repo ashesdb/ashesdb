@@ -11,6 +11,9 @@
     "directory": "packages/app"
   },
   "files": [],
+  "jobs": [
+    "build-container"
+  ],
   "scripts": {
     "build": "webpack",
     "start": "run-p start-nodemon start-webpack",
