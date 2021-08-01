@@ -43,6 +43,34 @@ jobs:
         id: packages
         run: echo "::set-output name=packages ::$((yarn lerna changed --loglevel silent || true) | paste -sd, -)"
 
+  build:
+    name: Build packages
+    runs-on: ubuntu-latest
+    needs:
+      - install
+      - changed
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-dependencies-${{ hashFiles('yarn.lock') }}
+      - name: Version packages
+        run: yarn lerna version --no-git-tag-version --no-push
+      - name: Build changed packages
+        env:
+          CHANGED: ${{ needs.changed.outputs.packages }}
+        run: test -z "$CHANGED" || yarn build --scope="{,$CHANGED}" --include-dependencies
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: |-
+            packages/*/dist
+            packages/*/package.json
+
   test:
     name: Run tests
     runs-on: ubuntu-latest
