@@ -27,6 +27,16 @@ jobs:
       - run: yarn
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
 
+  terraform-validate:
+    name: Validate terraform configuration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v1
+      - run: terraform init
+      - run: terraform fmt
+      - run: terraform validate
+
   changed:
     name: Get changed packages
     runs-on: ubuntu-latest
