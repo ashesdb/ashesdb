@@ -1,3 +1,11 @@
+module "namespace" {
+  source = "github.com/chiel/project-namespace"
+
+  name       = "ashesdb"
+  ghcr_token = var.ghcr_token
+  ghcr_user  = var.ghcr_user
+}
+
 resource "github_repository" "ashesdb" {
   name                   = "ashesdb"
   visibility             = "public"
