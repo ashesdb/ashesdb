@@ -8,11 +8,11 @@ const validJobs = {
 };
 
 const argv = yargs(hideBin(process.argv))
-	.command('$0 <packages>', 'Generate matrices per job for given packages.', yargs => {
+	.command('$0 [packages]', 'Generate matrices per job for given packages.', yargs => {
 		yargs.positional('packages', {
 			describe: 'Comma-separated list of package names.',
 			type: 'string',
-			coerce: arg => arg.split(','),
+			coerce: arg => arg ? arg.split(',') : [],
 		});
 	})
 	.help()
