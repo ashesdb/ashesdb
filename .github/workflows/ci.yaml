@@ -187,8 +187,6 @@ jobs:
           name: build-artifacts
           path: packages
       - run: git reset --hard HEAD
-      - run: git branch -a
-      - run: tree -I 'coverage|node_modules' .
       - name: Configure CI git user
         run: |
           git config --global user.email "chiel@kunkels.me"
