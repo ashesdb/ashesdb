@@ -13,3 +13,8 @@ variable "ingress_ip" {
   type        = string
   description = "Ingress IP address."
 }
+
+variable "kube_host" {
+  type        = string
+  description = "The hostname of the Kubernetes API."
+}
