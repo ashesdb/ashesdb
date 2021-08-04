@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - '*'
 
 env:
   DOCKER_REPO: ghcr.io/ashesdb
@@ -158,8 +158,10 @@ jobs:
           -t $DOCKER_REPO/${{ matrix.package }}:${{ steps.version.outputs.version }}
           packages/${{ matrix.package }}
       - name: Log into GHCR
+        if: github.ref == 'refs/heads/master'
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
       - name: Push docker image to GHCR
+        if: github.ref == 'refs/heads/master'
         run: docker push $DOCKER_REPO/${{ matrix.package }}:${{ steps.version.outputs.version }}
 
   publish:
@@ -171,6 +173,7 @@ jobs:
       - test
     if: |
       always() &&
+      github.ref == 'refs/heads/master' &&
       needs.build.result == 'success' &&
       (needs.build-containers.result == 'success' || needs.build-containers.result == 'skipped') &&
       needs.test.result == 'success'
