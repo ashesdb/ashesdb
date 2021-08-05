@@ -1,5 +1,25 @@
 ---
 apiVersion: v1
+kind: Service
+metadata:
+  name: app
+  labels:
+    app.kubernetes.io/name: app
+    app.kubernetes.io/version: ${RELEASE}
+    app.kubernetes.io/component: http
+    app.kubernetes.io/part-of: ashesdb
+    app.kubernetes.io/managed-by: github-actions
+spec:
+  selector:
+    app.kubernetes.io/name: app
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+
+
+---
+apiVersion: v1
 kind: ConfigMap
 metadata:
   name: app
