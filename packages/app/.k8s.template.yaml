@@ -1,4 +1,19 @@
 ---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app
+  labels:
+    app.kubernetes.io/name: app
+    app.kubernetes.io/version: ${RELEASE}
+    app.kubernetes.io/component: http
+    app.kubernetes.io/part-of: ashesdb
+    app.kubernetes.io/managed-by: github-actions
+data:
+  NODE_ENV: production
+
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -32,3 +47,6 @@ spec:
             - name: http
               containerPort: 4700
               protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: app
