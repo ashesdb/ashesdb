@@ -12,7 +12,8 @@
   },
   "files": [],
   "jobs": [
-    "build-container"
+    "build-container",
+    "deploy-kubernetes"
   ],
   "scripts": {
     "build": "webpack",
