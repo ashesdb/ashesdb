@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/ashesdb/ashesdb/compare/@ashesdb/app@0.2.0...@ashesdb/app@0.3.0) (2021-08-05)
+
+
+### Features
+
+* **app:** create kubernetes deployment ([7b61de0](https://github.com/ashesdb/ashesdb/commit/7b61de04694a25cab5b89ca7c9794a3ac7feaa70))
+
+
+
+
+
 # [0.2.0](https://github.com/ashesdb/ashesdb/compare/@ashesdb/app@0.1.0...@ashesdb/app@0.2.0) (2021-08-01)
 
 
