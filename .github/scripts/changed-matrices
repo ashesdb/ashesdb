@@ -5,6 +5,7 @@ const { hideBin } = require('yargs/helpers');
 
 const validJobs = {
 	'build-container': true,
+	'deploy-kubernetes': true,
 };
 
 const argv = yargs(hideBin(process.argv))
