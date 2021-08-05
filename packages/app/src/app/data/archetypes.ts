@@ -1,6 +1,26 @@
 import { getOrderedSkills } from './utils';
 
 const skillTreesLayouts: { [k: string]: ashesdb.SkillTreeLayout[] } = {
+	cleric: [
+		{
+			id: 'passive',
+			skills: [
+				['increased-healing', 'mana-regeneration'],
+				['maximum-mana', 'health-regeneration', 'critical-hit-rate'],
+				['maximum-health', 'defense-mitigation'],
+				['disable-defense', 'cooldown-reduction', 'movement-speed'],
+			],
+		},
+		{
+			id: 'active',
+			skills: [
+				['judgment', 'divine-light'],
+				['castigation', 'regeneration'],
+				['divine-censure', 'resurrection', 'devotion'],
+				['hallowed-ground', 'radiant-burst'],
+			],
+		},
+	],
 	mage: [
 		{
 			id: 'passive',
@@ -21,6 +41,26 @@ const skillTreesLayouts: { [k: string]: ashesdb.SkillTreeLayout[] } = {
 			],
 		},
 	],
+	tank: [
+		{
+			id: 'passive',
+			skills: [
+				['block-chance', 'mana-regeneration'],
+				['healing-received', 'health-regeneration', 'critical-hit-rate'],
+				['maximum-health', 'defense-mitigation'],
+				['physical-evasion-bonus', 'cooldown-reduction', 'movement-speed'],
+			],
+		},
+		{
+			id: 'active',
+			skills: [
+				['onslaught', 'lacerate'],
+				['javelin', 'resounding-smash', 'bulwark'],
+				['weapon-toss', 'shockwave', 'myrmidons-fury'],
+				['ultimate-defense']
+			],
+		},
+	],
 };
 
 export const archetypes: ashesdb.Archetype[] = [
@@ -28,6 +68,8 @@ export const archetypes: ashesdb.Archetype[] = [
 		id: 'tank',
 		name: 'Tank',
 		description: 'A tank\'s job is to control a fight, to help the party mitigate incoming damage, and to dictate who is getting hit. They can take an unconscionable amount of punishment, and woe to those who ignore their commands.',
+		skillTreesLayout: skillTreesLayouts.tank,
+		orderedSkills: getOrderedSkills(skillTreesLayouts.tank),
 	},
 	{
 		id: 'fighter',
@@ -55,6 +97,8 @@ export const archetypes: ashesdb.Archetype[] = [
 		id: 'cleric',
 		name: 'Cleric',
 		description: 'In such a dangerous world, a Cleric is never wanting for friends. They can protect their allies in a number of ways, and when necessary, snuff the life out of others. Masters over the very essence of life, they can sense the broken and corrupted.',
+		skillTreesLayout: skillTreesLayouts.cleric,
+		orderedSkills: getOrderedSkills(skillTreesLayouts.cleric),
 	},
 	{
 		id: 'summoner',
