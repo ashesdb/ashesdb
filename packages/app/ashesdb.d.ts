@@ -9,6 +9,7 @@ declare namespace ashesdb {
 	interface Archetype {
 		id: string;
 		name: string;
+		school: 'arcane' | 'martial';
 		description: string;
 		skillTreesLayout?: SkillTreeLayout[];
 		orderedSkills?: string[];
