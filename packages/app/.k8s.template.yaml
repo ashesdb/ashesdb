@@ -29,6 +29,25 @@ spec:
 
 
 ---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ingress-to-backends
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: app
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          ingress: "true"
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: ingress-nginx
+
+
+---
 apiVersion: v1
 kind: Service
 metadata:
