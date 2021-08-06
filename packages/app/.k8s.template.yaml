@@ -39,12 +39,12 @@ spec:
       app.kubernetes.io/name: app
   ingress:
     - from:
-      - namespaceSelector:
-          matchLabels:
-            name: default
-        podSelector:
-          matchLabels:
-            app.kubernetes.io/name: ingress-nginx
+        - namespaceSelector:
+            matchLabels:
+              name: default
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: ingress-nginx
 
 
 ---
