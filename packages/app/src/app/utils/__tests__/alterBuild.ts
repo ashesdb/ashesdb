@@ -2,6 +2,11 @@ import { archetypesById } from '../../data/archetypes';
 import { getOrderedSkills } from '../../data/utils';
 import alterBuild from '../alterBuild';
 
+jest.mock('../../data', () => ({
+	__esModule: true,
+	skillTierThresholds: [0, 4, 10, 18],
+}));
+
 jest.mock('../../data/archetypes', () => ({
 	__esModule: true,
 	archetypesById: {
@@ -172,7 +177,7 @@ describe('alterBuild', () => {
 	];
 
 	casesRemoveFail.forEach(({ skillId, skillName, pointsPerSkill }) => {
-		it('should throw an error when trying to remove a point fro a skill on a tier that would lock later tiers with points assigned', () => {
+		it('should throw an error when trying to remove a point from a skill on a tier that would lock later tiers with points assigned', () => {
 			const build = { archetypeId: 'mage', pointsPerSkill };
 			const shouldThrow = () => {
 				alterBuild(build, skillId, -1)
