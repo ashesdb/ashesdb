@@ -17,6 +17,9 @@ export default {
 			statements: 100,
 		},
 	},
+	moduleNameMapper: {
+		'\\.(jpg|png)$': '<rootDir>/jest.mock.js',
+	},
 	preset: 'ts-jest',
 	restoreMocks: false,
 	setupFilesAfterEnv: [
