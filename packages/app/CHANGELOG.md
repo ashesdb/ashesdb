@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/ashesdb/ashesdb/compare/@ashesdb/app@0.3.4...@ashesdb/app@0.4.0) (2021-08-11)
+
+
+### Bug Fixes
+
+* **app:** fix broken alterBuild test ([3b4523a](https://github.com/ashesdb/ashesdb/commit/3b4523a5037ca772f4d86205ff9fbc6bb101d94c))
+* **app:** refactor + test SkillsPlannerArchetypes ([43203c3](https://github.com/ashesdb/ashesdb/commit/43203c3c59047be02f39d07099576693251225ba))
+
+
+### Features
+
+* **app:** add getUnlockedTiers utility function ([04e70bd](https://github.com/ashesdb/ashesdb/commit/04e70bdb18d178f59c6cfc3fccbfe79884ee2bdf))
+* **app:** add SkillsPlanner component ([e21d11e](https://github.com/ashesdb/ashesdb/commit/e21d11e7fed8e4b7ca9ec0109cf29bca2971f388))
+* **app:** add SkillsPlannerSkill component ([4965ed5](https://github.com/ashesdb/ashesdb/commit/4965ed541507061e63845338f98010dce26bebb1))
+* **app:** add SkillsPlannerTier component ([38ae653](https://github.com/ashesdb/ashesdb/commit/38ae6530a4c522d8123212ab146946c8e3997f49))
+* **app:** add SkillsPlannerTree component ([e8c33eb](https://github.com/ashesdb/ashesdb/commit/e8c33eb599c5dfd497b1d35d4cd47544784e134f))
+* **app:** finish SkillsPlannerContainer + tests ([6a6a1a2](https://github.com/ashesdb/ashesdb/commit/6a6a1a25b0a89d32d633b0fb31537447e2e8a9ea))
+* **skills-planner:** add archetype selection ([4fad575](https://github.com/ashesdb/ashesdb/commit/4fad575eaa97b5a16aff1866893c435235f44e16))
+
+
+
+
+
 ## [0.3.4](https://github.com/ashesdb/ashesdb/compare/@ashesdb/app@0.3.3...@ashesdb/app@0.3.4) (2021-08-05)
 
 
