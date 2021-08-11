@@ -5,7 +5,7 @@ export default createUseStyles({
 		display: 'flex'
 	},
 
-	archetype: {
+	tile: {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -14,11 +14,17 @@ export default createUseStyles({
 		margin: [10, 5],
 		border: [2, 'solid', '#333'],
 		borderRadius: 2,
+		opacity: .25,
+	},
+
+	archetype: {
+		border: [2, 'solid', '#333'],
 		boxShadow: [
 			[0, 2, 1, -1, 'rgba(0, 0, 0, .2)'],
 			[0, 1, 1, 0, 'rgba(0, 0, 0, .14)'],
 			[0, 1, 3, 0, 'rgba(0, 0, 0, .12)'],
 		],
+		opacity: 1,
 		textDecoration: 'none',
 		transform: 'translateY(0)',
 		transition: [
@@ -35,11 +41,5 @@ export default createUseStyles({
 			],
 			transform: 'translateY(-2px)',
 		},
-	},
-
-	disabled: {
-		boxShadow: 'none',
-		opacity: .25,
-		pointerEvents: 'none',
 	},
 });

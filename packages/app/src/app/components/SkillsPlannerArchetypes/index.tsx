@@ -14,13 +14,9 @@ export default function SkillsPlannerArchetypes() {
 			{['martial', 'arcane'].map(school => (
 				<div key={school}>
 					{archetypes.filter(archetype => archetype.school === school).map(archetype => (
-						<Link
-							key={archetype.id}
-							className={cn(css.archetype, { [css.disabled]: !archetype.skillTreesLayout })}
-							to={archetype.id}
-						>
-							{archetype.name}
-						</Link>
+						!archetype.skillTreesLayout
+							? <span key={archetype.id} className={cn(css.tile)}>{archetype.name}</span>
+							: <Link key={archetype.id} className={cn(css.tile, css.archetype)} to={archetype.id}>{archetype.name}</Link>
 					))}
 				</div>
 			))}
