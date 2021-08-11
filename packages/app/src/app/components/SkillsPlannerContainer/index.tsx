@@ -1,6 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
+import { alterBuild, createBuildString } from '../../utils';
+import SkillsPlanner from '../SkillsPlanner';
 import SkillsPlannerArchetypes from '../SkillsPlannerArchetypes';
 
 import { useBuild } from './hooks';
@@ -8,6 +10,7 @@ import useStyles from './useStyles';
 
 export default function SkillsPlannerContainer() {
 	const css = useStyles();
+	const navigate = useNavigate();
 	const { '*': buildString } = useParams();
 	const { build, error } = useBuild(buildString);
 
@@ -22,9 +25,17 @@ export default function SkillsPlannerContainer() {
 		);
 	}
 
+	function handleChange(skillId: string, delta: 1 | -1) {
+		try {
+			const alteredBuild = alterBuild(build!, skillId, delta);
+			const alteredBuildString = createBuildString(alteredBuild);
+			navigate(alteredBuildString);
+		} catch (err) {
+			console.error('Failed to alter build', err);
+		}
+	}
+
 	return (
-		<p>
-			Skills planner for {build.archetypeId} - coming soon.
-		</p>
+		<SkillsPlanner build={build} onChange={handleChange} />
 	);
 }
