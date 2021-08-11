@@ -20,5 +20,5 @@ export default {
 	preset: 'ts-jest',
 	restoreMocks: false,
 	testEnvironment: 'jsdom',
-  testMatch: ['**/__tests__/*.{ts,tsx}'],
+	testMatch: ['**/__tests__/*.{ts,tsx}'],
 };
