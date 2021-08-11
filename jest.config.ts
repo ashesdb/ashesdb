@@ -19,6 +19,9 @@ export default {
 	},
 	preset: 'ts-jest',
 	restoreMocks: false,
+	setupFilesAfterEnv: [
+		'<rootDir>/jest.setup.ts',
+	],
 	testEnvironment: 'jsdom',
 	testMatch: ['**/__tests__/*.{ts,tsx}'],
 };
