@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/ashesdb/ashesdb/compare/@ashesdb/app@0.4.0...@ashesdb/app@0.4.1) (2021-12-17)
+
+
+### Bug Fixes
+
+* **app:** trigger deploy ([61ba416](https://github.com/ashesdb/ashesdb/commit/61ba4165fd3019a21625e70dc2c428202c430f8b))
+* **app:** update k8s manifest ([ce61b1f](https://github.com/ashesdb/ashesdb/commit/ce61b1f68d7107e53cda48412d9652e5458134f1))
+
+
+
+
+
 # [0.4.0](https://github.com/ashesdb/ashesdb/compare/@ashesdb/app@0.3.4...@ashesdb/app@0.4.0) (2021-08-11)
 
 
