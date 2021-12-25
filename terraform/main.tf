@@ -1,5 +1,5 @@
 module "namespace" {
-  source = "github.com/chiel/project-namespace?ref=v0.2.0"
+  source = "github.com/chiel/project-namespace?ref=v0.2.1"
 
   name       = "ashesdb"
   ghcr_token = var.ghcr_token
