@@ -12,3 +12,8 @@ variable "GHCR_CREDENTIALS" {
   description = "GHCR credentials in user:token format"
   type        = string
 }
+
+variable "GITHUB_TOKEN" {
+  description = "GitHub token"
+  type        = string
+}

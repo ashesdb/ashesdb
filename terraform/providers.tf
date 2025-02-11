@@ -7,6 +7,11 @@ provider "digitalocean" {
   token = var.DIGITALOCEAN_TOKEN
 }
 
+provider "github" {
+  owner = "ashesdb"
+  token = var.GITHUB_TOKEN
+}
+
 provider "kubernetes" {
   host                   = local.kube_host
   token                  = local.kube_config.token
