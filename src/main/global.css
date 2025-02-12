@@ -34,27 +34,3 @@ a {
 		color: var(--c-primary);
 	}
 }
-
-.hello {
-	max-width: 40rem;
-	margin: 150px 0 0;
-	padding: var(--l-spacing);
-	text-align: center;
-}
-
-.logotype {
-	margin: 0;
-	color: #666;
-	letter-spacing: -0.08em;
-	text-transform: uppercase;
-
-	span {
-		color: #444;
-	}
-}
-
-.subtext {
-	margin: var(--l-spacing-m) 0 0;
-	color: #666;
-	font-size: 12px;
-}
