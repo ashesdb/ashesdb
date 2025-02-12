@@ -85,9 +85,12 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create short sha
+        id: short_sha
+        run: echo "value=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Build and push image
         uses: docker/build-push-action@v3
         with:
           push: ${{ github.ref == 'refs/heads/main' }}
-          tags: ghcr.io/ashesdb/app:${{ github.sha }}
+          tags: ghcr.io/ashesdb/app:${{ steps.short_sha.outputs.value }}
           context: .
