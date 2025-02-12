@@ -1,0 +1,60 @@
+:root {
+	--c-background: #191919;
+	--c-primary: #d43b76;
+	--c-text: #eee;
+}
+
+html {
+	background: var(--c-background);
+	color: var(--c-text);
+	font:
+		400 16px / var(--l-spacing-xl) 'ubuntu',
+		sans-serif;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	margin: 0;
+}
+
+p {
+	margin: 0;
+}
+
+p + p {
+	margin-top: var(--l-spacing);
+}
+
+a {
+	color: var(--c-text);
+	transition: color 0.2s ease-out;
+
+	&:hover {
+		color: var(--c-primary);
+	}
+}
+
+.hello {
+	max-width: 40rem;
+	margin: 150px 0 0;
+	padding: var(--l-spacing);
+	text-align: center;
+}
+
+.logotype {
+	margin: 0;
+	color: #666;
+	letter-spacing: -0.08em;
+	text-transform: uppercase;
+
+	span {
+		color: #444;
+	}
+}
+
+.subtext {
+	margin: var(--l-spacing-m) 0 0;
+	color: #666;
+	font-size: 12px;
+}

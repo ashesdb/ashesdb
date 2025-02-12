@@ -1,0 +1,15 @@
+:root {
+	--l-radius-xs: 2px;
+	--l-radius-s: 4px;
+	--l-radius-m: 6px;
+	--l-radius-l: 8px;
+	--l-radius-xl: 12px;
+
+	--l-spacing-xxs: 2px;
+	--l-spacing-xs: 4px;
+	--l-spacing-s: 8px;
+	--l-spacing-m: 12px;
+	--l-spacing-l: 16px;
+	--l-spacing-xl: 24px;
+	--l-spacing-xxl: 48px;
+}
