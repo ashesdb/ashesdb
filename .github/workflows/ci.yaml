@@ -94,3 +94,24 @@ jobs:
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: ghcr.io/ashesdb/app:${{ steps.short_sha.outputs.value }}
           context: .
+
+  deploy:
+    name: Deploy to kubernetes
+    runs-on: ubuntu-24.04
+    needs:
+      - build-docker
+      - lint
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/setup-kubectl@v4
+      - name: Create short sha
+        id: short_sha
+        run: echo "value=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+      - name: Generate kubernetes manifest
+        run: |
+          export RELEASE="${{ steps.short_sha.outputs.value }}"
+          envsubst < .k8s.template.yaml >> .k8s.yaml
+      - name: Create .kubeconfig
+        run: echo "${{ secrets.KUBECONFIG }}" > .kubeconfig
+      - name: Apply kubernetes manifests
+        run: kubectl --kubeconfig=.kubeconfig apply -f .k8s.yaml
