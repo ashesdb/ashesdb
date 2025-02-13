@@ -1,5 +1,13 @@
-import { Hello } from './Hello';
+import { Route, Switch } from 'wouter';
+
+import { NotFoundPage } from '~/core/pages';
 
 export function App() {
-	return <Hello />;
+	return (
+		<Switch>
+			<Route>
+				<NotFoundPage />
+			</Route>
+		</Switch>
+	);
 }
