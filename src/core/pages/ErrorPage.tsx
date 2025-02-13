@@ -9,9 +9,11 @@ type Props = {
 
 export function ErrorPage({ message, title }: Props) {
 	return (
-		<div className={css.container}>
-			<h1 className={css.title}>{title}</h1>
-			<p className={css.message}>{message}</p>
+		<div className={css.outer}>
+			<div className={css.inner}>
+				<h2 className={css.title}>{title}</h2>
+				<p className={css.message}>{message}</p>
+			</div>
 		</div>
 	);
 }

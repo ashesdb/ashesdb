@@ -1,4 +1,9 @@
-.container {
+.outer {
+	display: flex;
+	justify-content: center;
+}
+
+.inner {
 	max-width: 40rem;
 	margin: 150px 0 0;
 	padding: var(--l-spacing);
