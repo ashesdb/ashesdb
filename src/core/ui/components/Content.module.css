@@ -1,0 +1,5 @@
+.content {
+	padding: var(--l-spacing-l) var(--l-spacing-xl);
+	border-radius: var(--l-radius-xl);
+	background: #191919;
+}
