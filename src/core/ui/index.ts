@@ -1,1 +1,1 @@
-export { Page } from './components/Page';
+export { Wrapper } from './components/Wrapper';

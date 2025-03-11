@@ -1,19 +1,25 @@
 import { Route, Switch } from 'wouter';
 
 import { NotFoundPage } from '~/core/pages';
-import { Page } from '~/core/ui';
+import { Wrapper } from '~/core/ui';
 
+import { ComingSoon } from './ComingSoon';
 import { Navigation } from './Navigation';
 
 export function App() {
 	return (
-		<Page>
+		<>
 			<Navigation />
-			<Switch>
-				<Route>
-					<NotFoundPage />
-				</Route>
-			</Switch>
-		</Page>
+			<Wrapper>
+				<Switch>
+					<Route path="/">
+						<ComingSoon />
+					</Route>
+					<Route>
+						<NotFoundPage />
+					</Route>
+				</Switch>
+			</Wrapper>
+		</>
 	);
 }

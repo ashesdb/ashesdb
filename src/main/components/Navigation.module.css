@@ -1,4 +1,9 @@
-.navigation {
+.outer {
+	background: #161616;
+	border-bottom: 1px solid #222;
+}
+
+.inner {
 	display: flex;
 	line-height: 60px;
 }
