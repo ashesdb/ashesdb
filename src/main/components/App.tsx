@@ -1,7 +1,9 @@
 import { Route, Switch } from 'wouter';
 
+import { FlagWall } from '~/core/flags';
 import { NotFoundPage } from '~/core/pages';
 import { Wrapper } from '~/core/ui';
+import { ToolsPage } from '~/tools/pages';
 
 import { ComingSoon } from './ComingSoon';
 import { Navigation } from './Navigation';
@@ -15,6 +17,11 @@ export function App() {
 					<Route path="/">
 						<ComingSoon />
 					</Route>
+					<FlagWall name="skilltrees">
+						<Route nest path="/tools">
+							<ToolsPage />
+						</Route>
+					</FlagWall>
 					<Route>
 						<NotFoundPage />
 					</Route>
