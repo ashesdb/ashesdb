@@ -19,7 +19,7 @@ export function SkillTreePicker() {
 				<ArchetypeCard
 					key={archetype.name}
 					archetype={archetype}
-					href={`/archetype/${archetype.name}`}
+					href={`/archetype/${archetype.name.toLowerCase()}`}
 				/>
 			))}
 		</div>
