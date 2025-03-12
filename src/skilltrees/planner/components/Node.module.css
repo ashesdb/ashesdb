@@ -1,0 +1,11 @@
+.node {
+	display: block;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #333;
+	background: #161616;
+}
+
+.positioned {
+	position: absolute;
+}

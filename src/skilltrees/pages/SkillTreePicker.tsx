@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
+import { Content } from '~/core/ui';
 import { fetchSkillTrees } from '~/skilltrees/data';
 import { ArchetypeCard } from '~/skilltrees/picker';
 
@@ -14,7 +15,7 @@ export function SkillTreePicker() {
 	if (isLoading || !data) return null;
 
 	return (
-		<div className={css.cards}>
+		<Content className={css.cards}>
 			{data.archetypes.map((archetype) => (
 				<ArchetypeCard
 					key={archetype.name}
@@ -22,6 +23,6 @@ export function SkillTreePicker() {
 					href={`/archetype/${archetype.name.toLowerCase()}`}
 				/>
 			))}
-		</div>
+		</Content>
 	);
 }

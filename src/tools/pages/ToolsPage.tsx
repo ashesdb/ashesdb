@@ -1,6 +1,6 @@
 import { Route, Switch } from 'wouter';
 
-import { SkillTreePicker } from '~/skilltrees/pages';
+import { SkillTreePicker, SkillTreePlanner } from '~/skilltrees/pages';
 
 export function ToolsPage() {
 	return (
@@ -9,6 +9,9 @@ export function ToolsPage() {
 				<Switch>
 					<Route path="/">
 						<SkillTreePicker />
+					</Route>
+					<Route path="/archetype/:archetypeName">
+						<SkillTreePlanner />
 					</Route>
 				</Switch>
 			</Route>

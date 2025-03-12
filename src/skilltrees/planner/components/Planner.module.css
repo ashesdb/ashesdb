@@ -1,0 +1,28 @@
+.planner {
+	display: flex;
+	width: 1200px;
+	height: 792px;
+	margin: 0 auto;
+	background: transparent no-repeat center / cover;
+	border: 1px solid #333;
+}
+
+.treeContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-grow: 1;
+	border-right: 1px solid #333;
+}
+
+.tree {
+	position: relative;
+}
+
+.autoGranted {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 20px;
+	padding: 20px;
+}
