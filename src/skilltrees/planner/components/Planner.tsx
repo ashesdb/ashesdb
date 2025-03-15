@@ -3,6 +3,8 @@ import { useMemo } from 'react';
 import { assetUrl } from '~/core/data';
 import type { SkillTree } from '~/skilltrees/data';
 
+import { usePlanner } from '../hooks/usePlanner';
+import { Connector } from './Connector';
 import { Node } from './Node';
 import css from './Planner.module.css';
 
@@ -11,6 +13,8 @@ type Props = {
 };
 
 export function Planner({ skillTree: data }: Props) {
+	const { connectors, nodes } = usePlanner(data);
+
 	const plannerStyle = useMemo(
 		() => ({
 			backgroundImage: `url(${assetUrl(data.backdrop)})`,
@@ -25,6 +29,15 @@ export function Planner({ skillTree: data }: Props) {
 			y: Math.max(...coords.map((coord) => coord.y)),
 		};
 	}, [data.coords]);
+
+	const occupiedCoords = useMemo(
+		() =>
+			Object.values(data.coords).reduce<Record<string, boolean>>(
+				(acc, coord) => ({ ...acc, [`${coord.x}.${coord.y}`]: true }),
+				{},
+			),
+		[data.coords],
+	);
 
 	const treeStyle = useMemo(
 		() => ({
@@ -43,8 +56,21 @@ export function Planner({ skillTree: data }: Props) {
 		<div className={css.planner} style={plannerStyle}>
 			<div className={css.treeContainer}>
 				<div className={css.tree} style={treeStyle}>
-					{Object.entries(data.coords).map(([id, coords]) => (
-						<Node key={id} coords={coords} maxCoords={maxCoords} />
+					<svg
+						className={css.connectors}
+						viewBox={`0 0 ${treeStyle.width} ${treeStyle.height}`}
+					>
+						{connectors.map((connector, i) => (
+							<Connector
+								key={i}
+								connector={connector}
+								maxCoords={maxCoords}
+								occupiedCoords={occupiedCoords}
+							/>
+						))}
+					</svg>
+					{Object.values(nodes).map((node) => (
+						<Node key={node.id} coords={node.coords} maxCoords={maxCoords} />
 					))}
 				</div>
 			</div>
