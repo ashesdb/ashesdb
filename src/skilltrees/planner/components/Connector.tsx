@@ -16,6 +16,20 @@ export function Connector({ connector, maxCoords, occupiedCoords }: Props) {
 		let x = 0;
 		let y = 0;
 
+		if (t.y < f.y && !occupiedCoords[`${f.x}.${f.y - 1}`]) {
+			x = f.x * 60 + 30;
+			y = (maxCoords.y - f.y) * 60 + 52;
+			d.push(`M${x},${y}`);
+
+			y = (maxCoords.y - t.y) * 60 + 30;
+			d.push(`${x},${y}`);
+
+			x = t.x * 60 + 8;
+			d.push(`${x},${y}`);
+
+			return d;
+		}
+
 		if (t.x < f.x) {
 			const sibling = `${f.x + 1}.${f.y}`;
 			const dest = `${t.x}.${t.y}`;
