@@ -1,17 +1,12 @@
 import cn from 'classnames';
 import { useMemo } from 'react';
 
+import type { Coords } from '../types';
 import css from './Node.module.css';
 
 type Props = {
-	coords?: {
-		x: number;
-		y: number;
-	};
-	maxCoords?: {
-		x: number;
-		y: number;
-	};
+	coords?: Coords;
+	maxCoords?: Coords;
 };
 
 export function Node({ coords, maxCoords }: Props) {
