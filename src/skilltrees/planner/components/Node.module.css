@@ -13,4 +13,11 @@
 .positioned {
 	position: absolute;
 	z-index: 2;
+	filter: grayscale(1);
+	opacity: 0.85;
+}
+
+.isActive {
+	filter: grayscale(0);
+	opacity: 1;
 }

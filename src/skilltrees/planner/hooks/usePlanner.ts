@@ -5,6 +5,17 @@ import type { SkillTree } from '~/skilltrees/data';
 import type { Connector, Node } from '../types';
 
 export function usePlanner(data: SkillTree) {
+	const activeNodes = useMemo(
+		() =>
+			Object.values(data.nodes).reduce<Record<string, boolean>>((acc, n) => {
+				const isActive =
+					n.pointRequirement === 0 && !n.skillsRequirement?.length;
+
+				return isActive ? { ...acc, [n.id]: true } : acc;
+			}, {}),
+		[data],
+	);
+
 	const skillToNodeMap = useMemo(
 		() =>
 			Object.values(data.nodes).reduce<Record<string, string>>((acc, node) => {
@@ -97,7 +108,7 @@ export function usePlanner(data: SkillTree) {
 	);
 
 	return useMemo(
-		() => ({ autoGranted, connectors, nodes }),
-		[autoGranted, connectors, nodes],
+		() => ({ activeNodes, autoGranted, connectors, nodes }),
+		[activeNodes, autoGranted, connectors, nodes],
 	);
 }

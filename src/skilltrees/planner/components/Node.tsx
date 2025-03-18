@@ -7,11 +7,12 @@ import type { Coords, Node } from '../types';
 import css from './Node.module.css';
 
 type Props = {
+	isActive?: boolean;
 	maxCoords?: Coords;
 	node: Node;
 };
 
-export function Node({ maxCoords, node }: Props) {
+export function Node({ isActive, maxCoords, node }: Props) {
 	const position = useMemo(() => {
 		if (!node.coords || !maxCoords) return undefined;
 		return {
@@ -32,6 +33,7 @@ export function Node({ maxCoords, node }: Props) {
 	return (
 		<button
 			className={cn(css.node, {
+				[css.isActive]: isActive,
 				[css.effect]: node.type === 'effect',
 				[css.positioned]: !!node.coords,
 			})}

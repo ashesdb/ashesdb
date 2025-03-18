@@ -13,7 +13,7 @@ type Props = {
 };
 
 export function Planner({ skillTree: data }: Props) {
-	const { autoGranted, connectors, nodes } = usePlanner(data);
+	const { activeNodes, autoGranted, connectors, nodes } = usePlanner(data);
 
 	const plannerStyle = useMemo(
 		() => ({
@@ -65,7 +65,12 @@ export function Planner({ skillTree: data }: Props) {
 						))}
 					</svg>
 					{Object.values(nodes).map((node) => (
-						<Node key={node.id} maxCoords={maxCoords} node={node} />
+						<Node
+							key={node.id}
+							isActive={!!activeNodes[node.id]}
+							maxCoords={maxCoords}
+							node={node}
+						/>
 					))}
 				</div>
 			</div>
