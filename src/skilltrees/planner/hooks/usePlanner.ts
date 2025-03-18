@@ -2,7 +2,8 @@ import { useMemo } from 'react';
 
 import type { SkillTree } from '~/skilltrees/data';
 
-import type { Connector, Node } from '../types';
+import type { Connector, Node, OnClickNode } from '../types';
+import { useSelectedNodes } from './useSelectedNodes';
 
 export function usePlanner(data: SkillTree) {
 	const activeNodes = useMemo(
@@ -58,6 +59,10 @@ export function usePlanner(data: SkillTree) {
 					}
 				}
 
+				if ('slotId' in n) {
+					node.type = 'choice';
+				}
+
 				if (n.skillsRequirement) {
 					node.requiredNodes = n.skillsRequirement.map((id) => {
 						const req = data.requirements[id];
@@ -90,6 +95,33 @@ export function usePlanner(data: SkillTree) {
 		[augmentedNodes, data.coords],
 	);
 
+	const { createOnClick, createOnRightClick, selectedNodes } =
+		useSelectedNodes(nodes);
+
+	const onClickFns = useMemo(
+		() =>
+			Object.keys(nodes).reduce<Record<string, OnClickNode>>(
+				(acc, id) => ({
+					...acc,
+					[id]: createOnClick(id),
+				}),
+				{},
+			),
+		[createOnClick, nodes],
+	);
+
+	const onRightClickFns = useMemo(
+		() =>
+			Object.keys(nodes).reduce<Record<string, OnClickNode>>(
+				(acc, id) => ({
+					...acc,
+					[id]: createOnRightClick(id),
+				}),
+				{},
+			),
+		[createOnRightClick, nodes],
+	);
+
 	const connectors = useMemo(
 		() =>
 			Object.values(nodes)
@@ -108,7 +140,23 @@ export function usePlanner(data: SkillTree) {
 	);
 
 	return useMemo(
-		() => ({ activeNodes, autoGranted, connectors, nodes }),
-		[activeNodes, autoGranted, connectors, nodes],
+		() => ({
+			activeNodes,
+			autoGranted,
+			connectors,
+			onClickFns,
+			onRightClickFns,
+			nodes,
+			selectedNodes,
+		}),
+		[
+			activeNodes,
+			autoGranted,
+			connectors,
+			onClickFns,
+			onRightClickFns,
+			nodes,
+			selectedNodes,
+		],
 	);
 }

@@ -3,16 +3,26 @@ import { useMemo } from 'react';
 
 import { assetUrl } from '~/core/data';
 
-import type { Coords, Node } from '../types';
+import type { Coords, Node, OnClickNode } from '../types';
 import css from './Node.module.css';
 
 type Props = {
 	isActive?: boolean;
+	isSelected?: boolean;
 	maxCoords?: Coords;
 	node: Node;
+	onClick?: OnClickNode;
+	onRightClick?: OnClickNode;
 };
 
-export function Node({ isActive, maxCoords, node }: Props) {
+export function Node({
+	isActive = false,
+	isSelected = false,
+	maxCoords,
+	node,
+	onClick,
+	onRightClick,
+}: Props) {
 	const position = useMemo(() => {
 		if (!node.coords || !maxCoords) return undefined;
 		return {
@@ -34,11 +44,14 @@ export function Node({ isActive, maxCoords, node }: Props) {
 		<button
 			className={cn(css.node, {
 				[css.isActive]: isActive,
+				[css.isSelected]: isSelected,
 				[css.effect]: node.type === 'effect',
 				[css.positioned]: !!node.coords,
 			})}
 			style={style}
 			type="button"
+			onClick={onClick}
+			onContextMenu={onRightClick}
 		/>
 	);
 }

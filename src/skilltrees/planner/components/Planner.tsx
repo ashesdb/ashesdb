@@ -13,7 +13,15 @@ type Props = {
 };
 
 export function Planner({ skillTree: data }: Props) {
-	const { activeNodes, autoGranted, connectors, nodes } = usePlanner(data);
+	const {
+		activeNodes,
+		autoGranted,
+		connectors,
+		onClickFns,
+		onRightClickFns,
+		nodes,
+		selectedNodes,
+	} = usePlanner(data);
 
 	const plannerStyle = useMemo(
 		() => ({
@@ -68,8 +76,11 @@ export function Planner({ skillTree: data }: Props) {
 						<Node
 							key={node.id}
 							isActive={!!activeNodes[node.id]}
+							isSelected={!!selectedNodes[node.id]}
 							maxCoords={maxCoords}
 							node={node}
+							onClick={onClickFns[node.id]}
+							onRightClick={onRightClickFns[node.id]}
 						/>
 					))}
 				</div>
