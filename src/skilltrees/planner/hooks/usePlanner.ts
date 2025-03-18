@@ -25,26 +25,24 @@ export function usePlanner(data: SkillTree) {
 		[data],
 	);
 
-	const autoGranted = useMemo(
-		() => data.autoGranted.map((id) => data.nodes[id]),
-		[data],
-	);
-
-	const nodes = useMemo(() => {
-		return Object.entries(data.coords).reduce<Record<string, Node>>(
-			(acc, [id, coords]) => {
-				const node: Partial<Node> = { id, coords };
-				const n = data.nodes[id];
+	const augmentedNodes = useMemo(
+		() =>
+			Object.values(data.nodes).reduce<Record<string, Node>>((acc, n) => {
+				const node: Partial<Node> = { id: n.id };
 
 				if ('skillId' in n) {
 					const skill = data.skills[n.skillId];
 					const skillRank = data.skillRanks[skill.skillRankIds[0]];
 
 					if ('abilityId' in skillRank) {
+						const ability = data.abilities[skillRank.abilityId];
+						node.icon = ability.icon;
 						node.type = 'ability';
 					}
 
 					if ('effectId' in skillRank) {
+						const effect = data.effects[skillRank.effectId];
+						node.icon = effect.icon;
 						node.type = 'effect';
 					}
 				}
@@ -59,11 +57,27 @@ export function usePlanner(data: SkillTree) {
 					});
 				}
 
-				return { ...acc, [id]: node as Node };
-			},
-			{},
-		);
-	}, [data, skillToNodeMap]);
+				return { ...acc, [n.id]: node as Node };
+			}, {}),
+		[data, skillToNodeMap],
+	);
+
+	const autoGranted = useMemo(
+		() => data.autoGranted.map((id) => augmentedNodes[id]),
+		[augmentedNodes],
+	);
+
+	const nodes = useMemo(
+		() =>
+			Object.entries(data.coords).reduce<Record<string, Node>>(
+				(acc, [id, coords]) => {
+					const node = { ...augmentedNodes[id], coords };
+					return { ...acc, [id]: node as Node };
+				},
+				{},
+			),
+		[augmentedNodes, data.coords],
+	);
 
 	const connectors = useMemo(
 		() =>

@@ -1,8 +1,22 @@
 import { fetchData } from '~/core/data';
 
+export type Ability = {
+	id: string;
+	description: string;
+	icon: string;
+	name: string;
+};
+
 type Coords = {
 	x: number;
 	y: number;
+};
+
+export type Effect = {
+	id: string;
+	description: string;
+	icon: string;
+	name: string;
 };
 
 export type BaseNode = {
@@ -73,6 +87,8 @@ export type SkillTree = {
 	displayName: string;
 	name: string;
 	autoGranted: string[];
+	abilities: Record<string, Ability>;
+	effects: Record<string, Effect>;
 	coords: Record<string, Coords>;
 	nodes: Record<string, Node>;
 	requirements: Record<string, Requirement>;

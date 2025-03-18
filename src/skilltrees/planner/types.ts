@@ -11,6 +11,7 @@ export type Coords = {
 export type Node = {
 	id: string;
 	coords?: Coords;
+	icon?: string;
 	requiredNodes?: string[];
 	type: 'ability' | 'effect';
 };

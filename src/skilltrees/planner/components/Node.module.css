@@ -3,7 +3,7 @@
 	width: 40px;
 	height: 40px;
 	border: 1px solid #333;
-	background: #161616;
+	background: #161616 no-repeat center / contain;
 }
 
 .effect {
