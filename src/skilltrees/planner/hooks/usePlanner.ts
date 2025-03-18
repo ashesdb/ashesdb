@@ -33,8 +33,22 @@ export function usePlanner(data: SkillTree) {
 	const nodes = useMemo(() => {
 		return Object.entries(data.coords).reduce<Record<string, Node>>(
 			(acc, [id, coords]) => {
-				const node: Node = { id, coords };
+				const node: Partial<Node> = { id, coords };
 				const n = data.nodes[id];
+
+				if ('skillId' in n) {
+					const skill = data.skills[n.skillId];
+					const skillRank = data.skillRanks[skill.skillRankIds[0]];
+
+					if ('abilityId' in skillRank) {
+						node.type = 'ability';
+					}
+
+					if ('effectId' in skillRank) {
+						node.type = 'effect';
+					}
+				}
+
 				if (n.skillsRequirement) {
 					node.requiredNodes = n.skillsRequirement.map((id) => {
 						const req = data.requirements[id];
@@ -44,7 +58,8 @@ export function usePlanner(data: SkillTree) {
 						return skillToNodeMap[req.skillId];
 					});
 				}
-				return { ...acc, [id]: node };
+
+				return { ...acc, [id]: node as Node };
 			},
 			{},
 		);

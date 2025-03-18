@@ -20,7 +20,10 @@ export function Node({ maxCoords, node }: Props) {
 
 	return (
 		<button
-			className={cn(css.node, { [css.positioned]: !!node.coords })}
+			className={cn(css.node, {
+				[css.effect]: node.type === 'effect',
+				[css.positioned]: !!node.coords,
+			})}
 			style={style}
 			type="button"
 		/>

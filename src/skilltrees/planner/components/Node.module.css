@@ -6,6 +6,10 @@
 	background: #161616;
 }
 
+.effect {
+	border-radius: 50%;
+}
+
 .positioned {
 	position: absolute;
 	z-index: 2;

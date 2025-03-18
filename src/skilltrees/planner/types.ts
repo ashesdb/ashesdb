@@ -12,4 +12,5 @@ export type Node = {
 	id: string;
 	coords?: Coords;
 	requiredNodes?: string[];
+	type: 'ability' | 'effect';
 };

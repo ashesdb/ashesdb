@@ -42,6 +42,27 @@ export type SkillRequirement = BaseRequirement & {
 
 export type Requirement = NodeRequirement | SkillRequirement;
 
+export type Skill = {
+	id: string;
+	skillRankIds: string[];
+};
+
+export type BaseSkillRank = {
+	id: string;
+};
+
+export type AbilitySkillRank = BaseSkillRank & {
+	abilityId: string;
+	skillPointCost: number;
+};
+
+export type EffectSkillRank = BaseSkillRank & {
+	effectId: string;
+	skillPointCost: number;
+};
+
+export type SkillRank = AbilitySkillRank | EffectSkillRank;
+
 type Slot = {
 	id: string;
 	skillIds: string[];
@@ -55,6 +76,8 @@ export type SkillTree = {
 	coords: Record<string, Coords>;
 	nodes: Record<string, Node>;
 	requirements: Record<string, Requirement>;
+	skills: Record<string, Skill>;
+	skillRanks: Record<string, SkillRank>;
 	slots: Record<string, Slot>;
 };
 
