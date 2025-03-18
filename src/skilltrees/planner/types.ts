@@ -10,6 +10,6 @@ export type Coords = {
 
 export type Node = {
 	id: string;
-	coords: Coords;
+	coords?: Coords;
 	requiredNodes?: string[];
 };

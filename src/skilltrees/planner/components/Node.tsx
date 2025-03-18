@@ -1,26 +1,26 @@
 import cn from 'classnames';
 import { useMemo } from 'react';
 
-import type { Coords } from '../types';
+import type { Coords, Node } from '../types';
 import css from './Node.module.css';
 
 type Props = {
-	coords?: Coords;
 	maxCoords?: Coords;
+	node: Node;
 };
 
-export function Node({ coords, maxCoords }: Props) {
+export function Node({ maxCoords, node }: Props) {
 	const style = useMemo(() => {
-		if (!coords || !maxCoords) return undefined;
+		if (!node.coords || !maxCoords) return undefined;
 		return {
-			top: (maxCoords.y - coords.y) * 60 + 10,
-			left: coords.x * 60 + 10,
+			top: (maxCoords.y - node.coords.y) * 60 + 10,
+			left: node.coords.x * 60 + 10,
 		};
-	}, [coords, maxCoords]);
+	}, [maxCoords, node.coords]);
 
 	return (
 		<button
-			className={cn(css.node, { [css.positioned]: !!coords })}
+			className={cn(css.node, { [css.positioned]: !!node.coords })}
 			style={style}
 			type="button"
 		/>

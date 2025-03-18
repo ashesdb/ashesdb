@@ -13,7 +13,7 @@ type Props = {
 };
 
 export function Planner({ skillTree: data }: Props) {
-	const { connectors, nodes } = usePlanner(data);
+	const { autoGranted, connectors, nodes } = usePlanner(data);
 
 	const plannerStyle = useMemo(
 		() => ({
@@ -47,11 +47,6 @@ export function Planner({ skillTree: data }: Props) {
 		[maxCoords],
 	);
 
-	const autoGranted = useMemo(
-		() => data.autoGranted.reverse(),
-		[data.autoGranted],
-	);
-
 	return (
 		<div className={css.planner} style={plannerStyle}>
 			<div className={css.treeContainer}>
@@ -70,13 +65,13 @@ export function Planner({ skillTree: data }: Props) {
 						))}
 					</svg>
 					{Object.values(nodes).map((node) => (
-						<Node key={node.id} coords={node.coords} maxCoords={maxCoords} />
+						<Node key={node.id} maxCoords={maxCoords} node={node} />
 					))}
 				</div>
 			</div>
 			<div className={css.autoGranted}>
-				{autoGranted.map((id) => (
-					<Node key={id} />
+				{autoGranted.map((node) => (
+					<Node key={node.id} node={node} />
 				))}
 			</div>
 		</div>

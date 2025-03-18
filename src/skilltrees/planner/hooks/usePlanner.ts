@@ -25,6 +25,11 @@ export function usePlanner(data: SkillTree) {
 		[data],
 	);
 
+	const autoGranted = useMemo(
+		() => data.autoGranted.map((id) => data.nodes[id]),
+		[data],
+	);
+
 	const nodes = useMemo(() => {
 		return Object.entries(data.coords).reduce<Record<string, Node>>(
 			(acc, [id, coords]) => {
@@ -54,7 +59,7 @@ export function usePlanner(data: SkillTree) {
 						...acc,
 						...node.requiredNodes!.map((id) => ({
 							from: data.coords[id],
-							to: node.coords,
+							to: node.coords!,
 						})),
 					],
 					[],
@@ -62,5 +67,8 @@ export function usePlanner(data: SkillTree) {
 		[nodes],
 	);
 
-	return useMemo(() => ({ connectors, nodes }), [connectors, nodes]);
+	return useMemo(
+		() => ({ autoGranted, connectors, nodes }),
+		[autoGranted, connectors, nodes],
+	);
 }
