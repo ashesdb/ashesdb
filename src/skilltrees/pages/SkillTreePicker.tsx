@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 
 import { Content } from '~/core/ui';
 import { fetchSkillTrees } from '~/skilltrees/data';
@@ -15,14 +16,19 @@ export function SkillTreePicker() {
 	if (isLoading || !data) return null;
 
 	return (
-		<Content className={css.cards}>
-			{data.archetypes.map((archetype) => (
-				<ArchetypeCard
-					key={archetype.name}
-					archetype={archetype}
-					href={`/archetype/${archetype.name.toLowerCase()}`}
-				/>
-			))}
-		</Content>
+		<>
+			<Helmet>
+				<title>Skill Trees</title>
+			</Helmet>
+			<Content className={css.cards}>
+				{data.archetypes.map((archetype) => (
+					<ArchetypeCard
+						key={archetype.name}
+						archetype={archetype}
+						href={`/archetype/${archetype.name.toLowerCase()}`}
+					/>
+				))}
+			</Content>
+		</>
 	);
 }

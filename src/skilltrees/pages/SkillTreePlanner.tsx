@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 import { useParams } from 'wouter';
 
 import { Content } from '~/core/ui';
@@ -16,8 +17,13 @@ export function SkillTreePlanner() {
 	if (isLoading || !data) return null;
 
 	return (
-		<Content>
-			<Planner skillTree={data} />
-		</Content>
+		<>
+			<Helmet>
+				<title>{data.displayName} Skill Tree</title>
+			</Helmet>
+			<Content>
+				<Planner skillTree={data} />
+			</Content>
+		</>
 	);
 }
