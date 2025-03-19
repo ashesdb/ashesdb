@@ -1,12 +1,6 @@
-:root {
-	--c-background: #191919;
-	--c-primary: #d43b76;
-	--c-text: #ccc;
-}
-
 html {
-	background: var(--c-background);
-	color: var(--c-text);
+	background: var(--c-body-bg);
+	color: var(--c-body-text);
 	font:
 		400 16px / var(--l-spacing-xl) 'ubuntu',
 		sans-serif;

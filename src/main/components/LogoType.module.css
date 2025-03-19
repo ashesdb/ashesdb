@@ -1,10 +1,10 @@
 .logo {
 	margin: 0;
-	color: #666;
+	color: var(--c-grey-700);
 	letter-spacing: -0.08em;
 	text-transform: uppercase;
 
 	span {
-		color: #444;
+		color: var(--c-grey-600);
 	}
 }

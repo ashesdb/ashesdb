@@ -1,6 +1,7 @@
 .outer {
-	background: #161616;
-	border-bottom: 1px solid #222;
+	background: var(--c-grey-200);
+	border-bottom: 1px solid var(--c-grey-500);
+	box-shadow: var(--shadow-100);
 }
 
 .inner {
