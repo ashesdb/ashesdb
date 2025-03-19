@@ -40,6 +40,7 @@ export function Node({
 		<button
 			className={cn(css.node, {
 				[css.isActive]: isActive,
+				[css.isInvalid]: !isActive && isSelected,
 				[css.isSelected]: isSelected,
 				[css.effect]: node.type === 'effect',
 				[css.positioned]: !!node.coords,

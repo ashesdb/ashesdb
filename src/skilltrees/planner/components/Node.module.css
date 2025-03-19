@@ -64,3 +64,10 @@
 		opacity: 1;
 	}
 }
+
+.isInvalid {
+	&::before {
+		border-color: red;
+		filter: grayscale(0);
+	}
+}
