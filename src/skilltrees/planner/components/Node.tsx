@@ -23,7 +23,7 @@ export function Node({
 	onClick,
 	onRightClick,
 }: Props) {
-	const position = useMemo(() => {
+	const style = useMemo(() => {
 		if (!node.coords || !maxCoords) return undefined;
 		return {
 			top: (maxCoords.y - node.coords.y) * 60 + 10,
@@ -31,14 +31,10 @@ export function Node({
 		};
 	}, [maxCoords, node.coords]);
 
-	const image = useMemo(
-		() => ({
-			backgroundImage: node.icon ? `url(${assetUrl(node.icon)})` : undefined,
-		}),
+	const icon = useMemo(
+		() => (node.icon ? assetUrl(node.icon) : undefined),
 		[node],
 	);
-
-	const style = useMemo(() => ({ ...image, ...position }), [image, position]);
 
 	return (
 		<button
@@ -52,6 +48,9 @@ export function Node({
 			type="button"
 			onClick={onClick}
 			onContextMenu={onRightClick}
-		/>
+			data-node-id={node.id}
+		>
+			<img className={css.icon} src={icon} />
+		</button>
 	);
 }

@@ -3,19 +3,19 @@
 	display: block;
 	width: 40px;
 	height: 40px;
+	padding: 0;
 	border: 1px solid #333;
 	background: #161616 no-repeat center / contain;
 }
 
-.effect {
-	border-radius: 50%;
+.icon {
+	display: block;
+	width: 100%;
 }
 
 .positioned {
 	position: absolute;
 	z-index: 2;
-	filter: grayscale(1);
-	opacity: 0.85;
 
 	&::before {
 		content: '';
@@ -26,13 +26,37 @@
 		bottom: -2px;
 		border: 2px solid #ccc;
 		opacity: 0;
-		transition: opacity 0.2s ease-out;
+		transition:
+			border-color 0.2s ease-out,
+			opacity 0.2s ease-out;
+	}
+
+	.icon {
+		filter: grayscale(1);
+		opacity: 0.75;
+		transition:
+			filter 0.2s ease-out,
+			opacity 0.2s ease-out;
+	}
+}
+
+.effect {
+	border-radius: 50%;
+
+	&::before {
+		border-radius: 50%;
+	}
+
+	.icon {
+		border-radius: 50%;
 	}
 }
 
 .isActive {
-	filter: grayscale(0);
-	opacity: 1;
+	.icon {
+		filter: grayscale(0);
+		opacity: 1;
+	}
 }
 
 .isSelected {
