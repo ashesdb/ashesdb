@@ -15,6 +15,7 @@ export type Node = {
 	coords?: Coords;
 	icon?: string;
 	requiredNodes?: string[];
+	requiredPoints: number;
 	type: 'ability' | 'choice' | 'effect';
 };
 
