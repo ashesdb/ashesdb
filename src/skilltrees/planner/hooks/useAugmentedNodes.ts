@@ -38,12 +38,16 @@ export function useAugmentedNodes(data: SkillTree) {
 
 					if ('abilityId' in skillRank) {
 						const ability = data.abilities[skillRank.abilityId];
+						node.name = ability.name;
+						node.description = ability.description;
 						node.icon = ability.icon;
 						node.type = 'ability';
 					}
 
 					if ('effectId' in skillRank) {
 						const effect = data.effects[skillRank.effectId];
+						node.name = effect.name;
+						node.description = effect.description;
 						node.icon = effect.icon;
 						node.type = 'effect';
 					}
