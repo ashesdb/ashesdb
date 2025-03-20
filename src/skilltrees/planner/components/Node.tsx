@@ -5,6 +5,7 @@ import { assetUrl } from '~/core/data';
 
 import type { Coords, Node, OnClickNode } from '../types';
 import css from './Node.module.css';
+import { NodeTooltip } from './NodeTooltip';
 
 type Props = {
 	isActive?: boolean;
@@ -37,21 +38,23 @@ export function Node({
 	);
 
 	return (
-		<button
-			className={cn(css.node, {
-				[css.isActive]: isActive,
-				[css.isInvalid]: !isActive && isSelected,
-				[css.isSelected]: isSelected,
-				[css.effect]: node.type === 'effect',
-				[css.positioned]: !!node.coords,
-			})}
-			style={style}
-			type="button"
-			onClick={onClick}
-			onContextMenu={onRightClick}
-			data-node-id={node.id}
-		>
-			<img className={css.icon} src={icon} />
-		</button>
+		<NodeTooltip node={node}>
+			<button
+				className={cn(css.node, {
+					[css.isActive]: isActive,
+					[css.isInvalid]: !isActive && isSelected,
+					[css.isSelected]: isSelected,
+					[css.effect]: node.type === 'effect',
+					[css.positioned]: !!node.coords,
+				})}
+				style={style}
+				type="button"
+				onClick={onClick}
+				onContextMenu={onRightClick}
+				data-node-id={node.id}
+			>
+				<img className={css.icon} src={icon} />
+			</button>
+		</NodeTooltip>
 	);
 }

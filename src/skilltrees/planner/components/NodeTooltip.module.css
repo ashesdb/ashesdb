@@ -1,0 +1,54 @@
+@keyframes slideRightAndFade {
+	from {
+		opacity: 0;
+		transform: translateX(2px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.positioner {
+	--z-index: 3 !important;
+}
+
+.content {
+	width: 350px;
+	border: 1px solid var(--c-border);
+	background: var(--c-grey-300);
+	box-shadow: var(--shadow-200);
+	animation: 0.2s ease-out slideRightAndFade;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--l-spacing-s) var(--l-spacing-s) var(--l-spacing-s)
+		var(--l-spacing-m);
+	border-bottom: 1px solid var(--c-border);
+	background: var(--c-grey-200);
+}
+
+.name {
+	margin: 0;
+	font-size: 18px;
+	letter-spacing: 0;
+	text-transform: none;
+}
+
+.icon {
+	display: block;
+	width: 24px;
+	height: 24px;
+	border: 1px solid var(--c-grey-500);
+}
+
+.effect {
+	border-radius: 50%;
+}
+
+.description {
+	padding: var(--l-spacing-s) var(--l-spacing-m);
+}

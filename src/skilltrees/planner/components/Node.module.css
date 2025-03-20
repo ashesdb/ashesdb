@@ -4,8 +4,8 @@
 	width: 40px;
 	height: 40px;
 	padding: 0;
-	border: 1px solid #333;
-	background: #161616 no-repeat center / contain;
+	border: 1px solid var(--c-grey-500);
+	background: var(--c-grey-200) no-repeat center / contain;
 }
 
 .icon {
@@ -67,7 +67,7 @@
 
 .isInvalid {
 	&::before {
-		border-color: red;
+		border-color: var(--c-red-100);
 		filter: grayscale(0);
 	}
 }
