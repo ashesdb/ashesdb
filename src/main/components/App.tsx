@@ -5,7 +5,7 @@ import { NotFoundPage } from '~/core/pages';
 import { Wrapper } from '~/core/ui';
 import { ToolsPage } from '~/tools/pages';
 
-import { ComingSoon } from './ComingSoon';
+import { Home } from './Home';
 import { Navigation } from './Navigation';
 
 export function App() {
@@ -15,7 +15,7 @@ export function App() {
 			<Wrapper>
 				<Switch>
 					<Route path="/">
-						<ComingSoon />
+						<Home />
 					</Route>
 					<FlagWall name="skilltrees">
 						<Route nest path="/tools">
